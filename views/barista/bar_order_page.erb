@@ -1,0 +1,26 @@
+<div>
+    <h1>Company Coffee</h1>
+        <p>Make these drinks.</a></p>
+        <p>
+        <%print_orders=Item.fetch_orders%>
+        <%print_orders.each do |hash|%>
+    
+<form action="/barista_order_page">
+        <input type="radio" name="item_id" value="<%= hash["item_id"]%>">
+    
+        <%= hash["item_id"]%>
+        <%= hash["drink"]%> -<b>
+        <%= hash["size"]%> -<b>
+        <%= hash["reg_decaf"]%> -<b>
+        <%= hash["cream"]%> -<b>
+        <%= hash["sugar"]%> -<b>
+        <%= hash["reg_skim"]%> -<b>
+        <%= hash["whip_nowhip"]%> -<b>
+        <%= hash["flavor"]%> -<b>
+        <%= hash["wet_dry"]%> -<b>
+        </p>
+        <%end%>
+        <input type="submit" value="Order is Made">        
+</form>    
+
+</div>

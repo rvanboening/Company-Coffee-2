@@ -1,7 +1,14 @@
 <div>
 <h1>Company Coffee</h1>
 
-<p> You have successfully inserted <%=@drink.drink%></p>
+<p> You have successfully inserted <%=@drink.drink_name%>
+<h3> On the Menu today: </h3>
+<%print_menu=Menu.fetch_drinks%>
+<%print_menu.each do |hash|%>
+<li><%= hash["drink_name"]%></li>
 
-
+<% end %>
+<br>
+<a href="/bar_edit_menu" title="Back To Homepage">Add another drink</a>
+</p>
 </div>

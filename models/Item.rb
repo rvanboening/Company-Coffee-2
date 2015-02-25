@@ -106,22 +106,7 @@ class Item
 
       pdf.text "#{o["user_name"]}. #{o["office_num"]}"
     end
-
-    # Prawn::Labels.generate(filename, order, user_info, :type => "Avery5160") do |pdf, o, u|
-    #
-    #   pdf.text "Enjoy your:#{o["item_id"]}. #{o["drink"]}. #{o["size"]}.
-    #                         #{o["reg_decaf"]}. #{o["cream"]}. #{o["sugar"]}. #{o["reg_skim"]}.
-    #                         #{o["whip_nowhip"]}. #{o["flavor"]}. #{o["wet_dry"]}. #{u["user_name"]}"
-    #                       end
-                        end
-
-    # Prawn::Labels.generate(filename, order, :type => "Avery5160") do |pdf, o|
-
-    # pdf.text "Order for:  #{o["item_id"]}.\n#{o["drink"]}.\n#{o["size"]}.\n
- #                          #{o["reg_decaf"]}.\n#{o["cream"]}.\n#{o["sugar"]}.\n#{o["reg_skim"]}.\n
- #                          #{o["whip_nowhip"]}.\n#{o["flavor"]}.\n#{o["wet_dry"]}"
- #                          end
-
+  end
 end
 
 # binding.pry

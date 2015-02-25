@@ -18,7 +18,7 @@ get "/bar_edit_menu" do
 end
  
  
-get "/bar_submit" do
+post "/bar_submit" do
   @drink=Menu.new(params)
   @drink.insert
   erb :"barista/bar_submit"

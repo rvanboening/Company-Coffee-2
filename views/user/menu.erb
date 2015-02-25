@@ -3,7 +3,19 @@
     <p>Hi <%=@user.user_name%>, what can we make for you today? </p>
     <br>
     <div>
+        
 <!--refactor with hrefs and with the drink menu -->
+        <form>
+            <input type ="hidden" name="user_id" value="<%=@user.user_id%>">
+            <%print_menu=Menu.fetch_drinks%>
+            <%print_menu.each do |hash|%>
+            <li><a href="user/drink/<%=hash["drink_name"]%>" title="<%=hash["drink_name"]%>"><%=hash["drink_name"]%></a></li>
+            <input type = "hidden" name="drink_name" value="<%=hash["drink_name"]%>">
+            <%end%>
+        </from> 
+     
+        
+        
         <form method=:link action="/coffee_page">
             <input type ="hidden" name="user_id" value="<%=@user.user_id%>">
             <input type = "Submit" value="Coffee">
@@ -30,3 +42,5 @@
         </form>
     </div>
 </div>
+
+

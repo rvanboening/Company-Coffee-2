@@ -3,11 +3,7 @@
     <p>Hi <%=@user.user_name%>, what can we make for you today? </p>
     <br>
     <div>
-
-<a href="/menu/:drink">
-<input type ="hidden" name="user_id" value="<%=@user.user_id%>">
-
-
+<!--refactor with hrefs and with the drink menu -->
         <form method=:link action="/coffee_page">
             <input type ="hidden" name="user_id" value="<%=@user.user_id%>">
             <input type = "Submit" value="Coffee">
@@ -34,15 +30,3 @@
         </form>
     </div>
 </div>
-
-
-<ul>
-  <% @all_transactions.each do |transaction_hash| %>
-    <li>
-      <a href="/detail/<%= transaction_hash["id"] %>">
-        <%= transaction_hash["description"] %>
-      </a>
-    </li>
-  <% end %>
-</ul>
-

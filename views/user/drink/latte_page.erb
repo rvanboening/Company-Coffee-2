@@ -1,0 +1,35 @@
+<div>
+<h2>How would you like that Latte?</a></h2>
+
+<form action="/success">
+    <form>
+    <input type="hidden" name="drink" value="Latte">
+    <input type="hidden" name="user_id" value="<%=@user_id%>">
+    <input type="hidden" name="order_made" value="Order">
+   
+    <h3> Regular or Decaf </h3>
+    <input type="radio" name="reg_decaf" value="Regular" checked>Regular
+    <br>
+    <input type="radio" name="reg_decaf" value="Decaf">Decaf
+    <br>
+    <br>
+    <h3> Size </h3>
+    <input type="radio" name="size" value="Small" checked>Small
+    <br>
+    <input type="radio" name="size" value="Medium">Medium
+    <br>
+    <input type="radio" name="size" value="Large">Large
+    <br>
+    <br>
+    <h3> Regular or Skim </h3>
+    <input type="radio" name="reg_skim" value="Reg Milk">Regular
+    <input type="radio" name="reg_skim" value="Skim">Skim
+    <br>
+    <br>  
+    <h3> Would you like that with vanilla flavor?</h3>
+    <input type="radio" name="flavor" value="Vanilla flavor">Yes
+    <input type="radio" name="flavor" value="No Flavor" checked>No
+    <br>
+    <input type = "Submit" class="button" value="Submit">
+</form>
+</div>

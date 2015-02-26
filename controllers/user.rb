@@ -9,42 +9,16 @@ get "/menu" do
   erb :"/user/menu"
 end
 
-get "/drink/:drink" do
-  erb :drink_page
-end
-
-get "/coffee_page" do
-  @user_id=params["user_id"]
-  erb :"user/drink/coffee_page"
-end
- 
-get "/mocha_page" do
-  @user_id=params["user_id"]
-  erb :"user/drink/mocha_page"
-end
-
+# Route for each drink option
 get "/user/drink/:drink_name" do
+  @user_id=params["user_id"]
   erb :"user/drink/#{params[:drink_name].downcase}_page"
-end
-
-get "/americano_page" do 
-  @user_id=params["user_id"]
-  erb :"user/drink/americano_page"
-end
-
-get "/latte_page" do 
-  @user_id=params["user_id"]
-  erb :"user/drink/latte_page"
-end
-
-get "/cappuccino_page" do
-  @user_id=params["user_id"]
-  erb :"user/drink/cappuccino_page"
-end
+end  
 
 get "/success" do
   user_id=params["user_id"]
   @new_item=Item.new(params)
+  binding.pry
   @new_item.insert(user_id)
   erb :"user/success"
 end

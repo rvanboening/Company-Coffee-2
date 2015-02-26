@@ -3,14 +3,14 @@ get "/" do
   erb :"user/homepage" 
 end
 
-get "/menu" do
+post "/menu" do
   @user=User.new(params)
   @user.insert
   erb :"/user/menu"
 end
 
 # Route for each drink option
-get "/user/drink/:drink_name" do
+post "/user/drink/:drink_name" do
   @user_id=params["user_id"]
   erb :"user/drink/#{params[:drink_name].downcase}_page"
 end  

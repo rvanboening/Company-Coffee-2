@@ -3,43 +3,17 @@
     <p>Hi <%=@user.user_name%>, what can we make for you today? </p>
     <br>
     <div>
-        
-<!--refactor with hrefs and with the drink menu -->
-        <form>
-            <input type ="hidden" name="user_id" value="<%=@user.user_id%>">
-            <%print_menu=Menu.fetch_drinks%>
-            <%print_menu.each do |hash|%>
-            <li><a href="user/drink/<%=hash["drink_name"]%>" title="<%=hash["drink_name"]%>"><%=hash["drink_name"]%></a></li>
-            <input type = "hidden" name="drink_name" value="<%=hash["drink_name"]%>">
-            <%end%>
-        </from> 
-     
-        
-        
-        <form method=:link action="/coffee_page">
-            <input type ="hidden" name="user_id" value="<%=@user.user_id%>">
-            <input type = "Submit" value="Coffee">
-        </form>
-        <br>
-        <form method=:link action="/mocha_page">
-            <input type ="hidden" name="user_id" value="<%=@user.user_id%>">
-            <input type = "Submit" value="Mocha">
-        </form>
-        <br>
-        <form method=:link action="/americano_page">
-            <input type ="hidden" name="user_id" value="<%=@user.user_id%>">
-            <input type = "Submit" value="Americano">
-        </form>
-        <br>
-        <form method=:link action="/latte_page">
-            <input type ="hidden" name="user_id" value="<%=@user.user_id%>">
-            <input type = "Submit" value="Latte">
-        </form>
-        <br>
-        <form method=:link action="/cappuccino_page">
-            <input type ="hidden" name="user_id" value="<%=@user.user_id%>">
-            <input type = "Submit" value="Cappuccino">
-        </form>
+     <input type ="hidden" name="user_id" value="<%=@user.user_id%>">  
+        <div>    
+                <%print_menu=Menu.fetch_drinks%>
+                <%print_menu.each do |hash|%>
+            <form action="/user/drink/<%=hash["drink_name"]%>">
+                <input type = "Submit" value="<%=hash["drink_name"]%>">
+                <br>
+                <%end%>
+                <input type ="hidden" name="user_id" value="<%=@user.user_id%>">
+            </form>
+        </div>
     </div>
 </div>
 

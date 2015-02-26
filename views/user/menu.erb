@@ -7,7 +7,7 @@
         <div>    
                 <%print_menu=Menu.fetch_drinks%>
                 <%print_menu.each do |hash|%>
-            <form action="/user/drink/<%=hash["drink_name"]%>">
+            <form action="/user/drink/<%=hash["drink_name"]%>" method="post">
                 <input type = "Submit" value="<%=hash["drink_name"]%>">
                 <br>
                 <%end%>

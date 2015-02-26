@@ -5,7 +5,7 @@
         <%print_orders=Item.fetch_orders%>
         <%print_orders.each do |hash|%>
     
-<form action="/barista_order_page">
+<form action="/bar_order_page">
         <input type="radio" name="item_id" value="<%= hash["item_id"]%>">
     
         <%= hash["item_id"]%>

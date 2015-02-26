@@ -2,10 +2,14 @@
 # manages the 
 # 
 # Attributes: 
-# @user_id    - Integer- primary Key
-# @user_name  - String- name of the user
-# @office_num - Integer- office number of the user
+# @user_id    - Integer - primary Key
+# @user_name  - String  - name of the user
+# @office_num - Integer - office number of the user
 # 
+# Public Methods:
+# #Insert
+# #self.print_user
+#
 class User 
   attr_accessor :user_id, :user_name, :office_num, :order_num
   attr_reader :user_id, :user_name, :office_num, :order_num
@@ -16,10 +20,22 @@ class User
     @office_num =options["office_num"]
   end
   
+
+  #Public: # Print
+ # Uses the Prawn-Labels Gem to create a pdf on labels. 
+ #
+ # Parameter
+ # made_item_id - The item_id of the product that is made. 
+ #
+ # Returns
+ # A pdf of the drink order and one pdf of the name and office number of the person that ordered it
+ #
+ # Changes
+ # The .pdf document changes depending on what the made_item_id is. 
+ 
+# Public Insert
+# Take the current object and insert it as a new record into the users table 
   
-  # Public Insert
-  # Take the current object and insert it as a new record into the users table 
-  #
   def insert
     sql_command="INSERT INTO users (user_name, office_num) VALUES ('#{@user_name}', '#{@office_num}')"
     DATABASE.execute(sql_command)

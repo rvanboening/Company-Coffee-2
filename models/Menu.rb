@@ -9,6 +9,18 @@ class Menu
     @drink_name    =options["drink_name"]
   end
   
+  # Public: #insert
+  # Inserts the drink into the database and provides it a user_id. 
+  #
+  # Parameters:
+  # NA. 
+  #
+  # Returns:
+  # Integer of the drink that was inserted into the database
+  #
+  # State Changes:
+  # Adds a drink to the menu
+  
   def insert
     sql_command="INSERT INTO menu (drink_name) VALUES ('#{@drink_name}')"
     DATABASE.execute(sql_command)
@@ -16,19 +28,18 @@ class Menu
     @user_id = DATABASE.last_insert_row_id
   end
   
-  #fetches all from drink = drink_id and drink
+  # Public: #fetch_drinks
+  # fetches all drinks from the databse 
+  #
+  #
+  # Returns:
+  # An array of hashes of the drink_id and drink_name.
+  #
+  # State Changes:
+  # No Changes
+  #
   def self.fetch_drinks
     DATABASE.execute("SELECT * FROM menu")
-    
-
-    # results.each do |r|
-    #   results_as_objects << self.new(r)
-    #
-    # end
-    #
-    # #an array of objects
-    # results_as_objects
-    
   end
   
 end

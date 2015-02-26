@@ -2,8 +2,32 @@
 # require 'SQLite3'
 # require_relative "../database_setup"
 
+
+# Class: Item
+#
+# Creates a drink item which is an order.
+#
+# Attributes:
+# @item_id    - Integer: Primary Key
+# @drink      - Stirng: Type of dirnk
+# @size       - String: Small, Medium, Large
+# @reg_decaf  - String: Regular or Decaf Coffee
+# @cream      - String: If cream add cream to drink
+# @sugar      - String: If sugar add sugar to drink
+# @reg_skim   - String: Regular or Skim milk
+# @whip_nowhip- String: Whip Cream or No Whip Cream
+# @flavor     - String: Add Vanilla flavor or do not
+# @wet_dry    - String: Wet Cappachino or Dry Cappachino
+#
+# Public Methods:
+# #insert
+# #self.fetch_all_orders
+# #fetch_orders
+# #self.edit(made_item_id)
+# #self.print(made_item_id)
+
 class Item
-  attr_reader :user_id, :drink, :size, :reg_decaf, :cream, :sugar, :reg_skim, :whip_nowhip, :flavor, :wet_dry, :order_made
+  attr_reader :user_id, :item_id, :drink, :size, :reg_decaf, :cream, :sugar, :reg_skim, :whip_nowhip, :flavor, :wet_dry, :order_made
   
   def initialize(options)
       @item_id      =options["item_id"]   #primary key
@@ -16,7 +40,7 @@ class Item
       @whip_nowhip  =options["whip_nowhip"]
       @flavor       =options["flavor"]
       @wet_dry      =options["wet_dry"]
-       
+      @order_made   =options["order_made"]
       @user_id      =options["user_id"]
     end
   
@@ -60,15 +84,31 @@ class Item
      DATABASE.execute("SELECT * FROM items")
   end
   
-  # Public: # Fetch_orders
+  # Public: #Fetch Orders
   # Lists all items that have been ordered but not made
+  #
+  # Returns:
+  # An array of hases of each record that the order_made column is set to Order
+  #
+  # State Changes:
+  # No changes are made
   
   def self.fetch_orders
      DATABASE.execute("SELECT * FROM items WHERE order_made = 'Order'")
   end
   
-  # Public: # Edit
-  # Updates an item status from Order to Made. 
+  
+  # Public: #Edit
+  # Updates item status from Order to Made 
+  #
+  # Parameters
+  # made_item_id - Item_id - Integer
+  #
+  # Returns 
+  # NA
+  # 
+  # Changes:
+  # This changes the Order_made status from Order to the status of Made
   # Must be "Order" and "Made"
   
   def self.edit(made_item_id)
@@ -76,6 +116,17 @@ class Item
   end
   
   # Public: # Print
+  # Uses the Prawn-Labels Gem to create a pdf on labels. 
+  #
+  # Parameter
+  # made_item_id - The item_id of the product that is made. 
+  #
+  # Returns
+  # A pdf of the drink order and one pdf of the name and office number of the person that ordered it
+  #
+  # Changes
+  # The .pdf document changes depending on what the made_item_id is. 
+  
   # This collects the record of the item that is made. 
   # This then prints the information using the Prawn Gem to turn the info into a .pdf 
   
@@ -86,15 +137,14 @@ class Item
     
     unless order == []
     # #Because there is only one item in the array 0 will = the 1st hash inside the array.
-    h = order[0]
-    o = h["user_id"]
+    o = order[0]["user_id"]
     end
     
     filename = "print_orders.pdf"
     
     Prawn::Labels.generate(filename, order, :type => "Avery5160") do |pdf, o|
       
-      pdf.text "Enjoy your:#{o["item_id"]}. #{o["drink"]}. #{o["size"]}. 
+      pdf.text "Enjoy your: #{o["drink"]}. #{o["size"]}. 
                             #{o["reg_decaf"]}. #{o["cream"]}. #{o["sugar"]}. #{o["reg_skim"]}. 
                             #{o["whip_nowhip"]}. #{o["flavor"]}. #{o["wet_dry"]}."
                           end

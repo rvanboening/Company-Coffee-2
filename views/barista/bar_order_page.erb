@@ -3,21 +3,21 @@
         <p>Make these drinks.</a></p>
         <p>
         <%print_orders=Item.fetch_orders%>
-        <%print_orders.each do |hash|%>
+        <%print_orders.each do |item|%>
     
 <form action="/bar_order_page">
-        <input type="radio" name="item_id" value="<%= hash["item_id"]%>">
+        <input type="radio" name="item_id" value="<%=item.item_id %>">
     
-        <%= hash["item_id"]%>
-        <%= hash["drink"]%> -<b>
-        <%= hash["size"]%> -<b>
-        <%= hash["reg_decaf"]%> -<b>
-        <%= hash["cream"]%> -<b>
-        <%= hash["sugar"]%> -<b>
-        <%= hash["reg_skim"]%> -<b>
-        <%= hash["whip_nowhip"]%> -<b>
-        <%= hash["flavor"]%> -<b>
-        <%= hash["wet_dry"]%> -<b>
+        <%= item.item_id %>
+        <%= item.drink %> -<b>
+        <%= item.size %> -<b>
+        <%= item.reg_decaf %> -<b>
+        <%= item.cream %> -<b>
+        <%= item.sugar %> -<b>
+        <%= item.reg_skim %> -<b>
+        <%= item.whip_nowhip %> -<b>
+        <%= item.flavor %> -<b>
+        <%= item.wet_dry %> -<b>
         </p>
         <%end%>
         <input type="submit" value="Order is Made">        

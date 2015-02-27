@@ -94,7 +94,12 @@ class Item
   # No changes are made
   
   def self.fetch_orders
-     DATABASE.execute("SELECT * FROM items WHERE order_made = 'Order'")
+     orders = DATABASE.execute("SELECT * FROM items WHERE order_made = 'Order'")
+     array_of_objects=[]
+     orders.each do |hash|
+       array_of_objects << self.new(hash)
+     end
+     return array_of_objects
   end
   
   

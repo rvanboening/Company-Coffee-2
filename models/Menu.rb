@@ -33,13 +33,19 @@ class Menu
   #
   #
   # Returns:
-  # An array of hashes of the drink_id and drink_name.
+  # An array of menu or objects = drink_id and drink_name.
   #
   # State Changes:
-  # No Changes
+  # Adds a menu object to the menu record.
+  # This will create the buttons a user can choose for the menu
   #
   def self.fetch_drinks
-    DATABASE.execute("SELECT * FROM menu")
+    menu_drinks=DATABASE.execute("SELECT * FROM menu")
+    array_of_menu_drinks = []
+    menu_drinks.each do |hash|
+      array_of_menu_drinks << self.new(hash)
+    end
+    return array_of_menu_drinks
   end
   
 end

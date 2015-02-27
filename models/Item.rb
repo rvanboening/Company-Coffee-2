@@ -71,24 +71,29 @@ class Item
   # Lists item id and name of a record
   #
   # Parameters:
-  # id - Item ID
+  # NA- 
   #
   # Returns:
-  # an arrary of hashes containing the item id and name
+  # an arrary of objects containing the item id and name
   #
   # State Changes: 
   # no changes
    
   # Lists all items for barista
   def self.fetch_all_orders
-     DATABASE.execute("SELECT * FROM items")
+     all_orders=DATABASE.execute("SELECT * FROM items")
+     array_of_all_objects=[]
+     all_orders.each do |hash|
+       array_of_all_objects << self.new(hash)
+     end
+     return array_of_all_objects
   end
   
   # Public: #Fetch Orders
   # Lists all items that have been ordered but not made
   #
   # Returns:
-  # An array of hases of each record that the order_made column is set to Order
+  # An array of objects of each record that the order_made column is set to Order
   #
   # State Changes:
   # No changes are made

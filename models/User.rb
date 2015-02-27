@@ -21,19 +21,21 @@ class User
   end
   
 
-  #Public: # Print
- # Uses the Prawn-Labels Gem to create a pdf on labels. 
- #
- # Parameter
- # made_item_id - The item_id of the product that is made. 
- #
- # Returns
- # A pdf of the drink order and one pdf of the name and office number of the person that ordered it
- #
- # Changes
- # The .pdf document changes depending on what the made_item_id is. 
  
-# Public Insert
+ 
+# Public #Insert
+# Creates a user record
+# 
+# Parameters:
+# @user_name
+# @office_number
+#
+# Returns:
+# NA
+# 
+# Changes:
+# This adds a record to the users table. 
+#
 # Take the current object and insert it as a new record into the users table 
   
   def insert
@@ -46,6 +48,17 @@ class User
 #     DATABASE.execute(sql_command_pop_order_table)
   end
   
+  #Public: # Print
+ # Uses the Prawn-Labels Gem to create a pdf on labels. 
+ #
+ # Parameter
+ # made_item_id - The item_id of the product that is made. 
+ #
+ # Returns
+ # A pdf of the drink order and one pdf of the name and office number of the person that ordered it
+ #
+ # Changes
+ # The .pdf document changes depending on what the made_item_id is. 
   def self.print_user(made_item_id)
     DATABASE.execute("SELECT * FROM users WHERE user_id = '#{made_item_id}'")
   end

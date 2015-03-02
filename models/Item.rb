@@ -44,7 +44,7 @@ class Item
       @user_id      =options["user_id"]
     end
   
-  # Public: #insert drink into database
+  # Public: #insert drink item into database
   #
   # Parameters: 
   #  user_id - #Integer -ID that is assigned to the user    
@@ -121,7 +121,7 @@ class Item
   # This changes the Order_made status from Order to the status of Made
   # Must be "Order" and "Made"
   
-  def self.edit(made_item_id)
+  def self.edit_item_status(made_item_id)
     DATABASE.execute("UPDATE items SET order_made='Made' WHERE item_id = '#{made_item_id}'")
   end
   
@@ -136,7 +136,7 @@ class Item
   #
   # Changes
   # The .pdf document changes depending on what the made_item_id is. 
-  
+  #
   # This collects the record of the item that is made. 
   # This then prints the information using the Prawn Gem to turn the info into a .pdf 
   

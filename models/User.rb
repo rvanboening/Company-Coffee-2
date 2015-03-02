@@ -9,7 +9,7 @@
 # Public Methods:
 # #Insert
 # #self.print_user
-#
+ 
 class User 
   attr_accessor :user_id, :user_name, :office_num, :order_num
   attr_reader :user_id, :user_name, :office_num, :order_num
@@ -20,9 +20,6 @@ class User
     @office_num =options["office_num"]
   end
   
-
- 
- 
 # Public #Insert
 # Creates a user record
 # 
@@ -43,9 +40,6 @@ class User
     DATABASE.execute(sql_command)
     
     @user_id = DATABASE.last_insert_row_id
-
-    # sql_command_pop_order_table = "INSERT INTO orders (user_id) VALUES ('#{@user_id}')"
-#     DATABASE.execute(sql_command_pop_order_table)
   end
   
   #Public: # Print
@@ -59,6 +53,7 @@ class User
  #
  # Changes
  # The .pdf document changes depending on what the made_item_id is. 
+ 
   def self.print_user(made_item_id)
     DATABASE.execute("SELECT * FROM users WHERE user_id = '#{made_item_id}'")
   end

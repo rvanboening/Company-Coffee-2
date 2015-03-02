@@ -18,7 +18,6 @@ end
 get "/success" do
   user_id=params["user_id"]
   @new_item=Item.new(params)
-  binding.pry
   @new_item.insert(user_id)
   erb :"user/success"
 end

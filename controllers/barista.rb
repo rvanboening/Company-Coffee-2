@@ -7,7 +7,6 @@ end
 get "/bar_order_page" do
     Item.print(params["item_id"])
     made_item = Item.edit(params["item_id"]) 
-  
  erb :"barista/bar_order_page"
 end
 

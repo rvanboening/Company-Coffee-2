@@ -4,8 +4,8 @@
 <p> You have successfully inserted <%=@drink.drink_name%>
 <h3> On the Menu today: </h3>
 <%print_menu=Menu.fetch_drinks%>
-<%print_menu.each do |hash|%>
-<li><%= hash["drink_name"]%></li>
+<%print_menu.each do |item|%>
+<li><%=item.drink_name%></li>
 
 <% end %>
 <br>

@@ -1,0 +1,6 @@
+source 'https://github.com/jordanbyron/prawn-labels.git'
+
+require 'sinatra' '~>1.4.5'
+require 'pry'
+require 'SQLite3'
+require "prawn/labels"

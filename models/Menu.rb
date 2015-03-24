@@ -6,14 +6,11 @@ class Menu
   attr_reader :drink_name
   
   def initialize(options)
-    @drink_name    =options["drink_name"]
+    @drink_name =options["drink_name"]
   end
   
   # Public: #insert
   # Inserts the drink into the database and provides it a user_id. 
-  #
-  # Parameters:
-  # NA. 
   #
   # Returns:
   # Integer of the drink that was inserted into the database

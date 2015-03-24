@@ -6,11 +6,12 @@ end
 post "/menu" do
   @user=User.new(params)
   @user.insert
-  erb :"/user/menu"
+  erb :"user/menu"
 end
 
 # Route for each drink option
 post "/user/drink/:drink_name" do
+  binding.pry
   @user_id=params["user_id"]
   erb :"user/drink/#{params[:drink_name].downcase}_page"
 end  

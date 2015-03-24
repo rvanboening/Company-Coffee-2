@@ -8,17 +8,17 @@
     <div class="main-content">
      <input type ="hidden" name="user_id" value="<%=@user.user_id%>">  
         <div>    
-                <%print_menu=Menu.fetch_drinks%>
-                <%print_menu.each do |item|%>
+            <%print_menu=Menu.fetch_drinks%>
+            <%print_menu.each do |item|%>
+                
             <form action="/user/drink/<%=item.drink_name%>" method="post">
-                <input type = "Submit" value="<%=item.drink_name%>">
-                <br>
-                <%end%>
+                <input type="Submit" value="<%=item.drink_name%>"> 
+                <br> 
                 <input type ="hidden" name="user_id" value="<%=@user.user_id%>">
             </form>
+            <%end%>
         </div>
     </div>
     
 </div>
-
-
+    

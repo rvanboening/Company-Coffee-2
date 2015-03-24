@@ -1,6 +1,7 @@
-source 'https://github.com/jordanbyron/prawn-labels.git'
+source 'https://rubygems.org'
+gem 'sinatra', '~>1.4.5'
+gem 'pry'
+gem 'sqlite3'
+gem "prawn-labels"
 
-require 'sinatra' '~>1.4.5'
-require 'pry'
-require 'SQLite3'
-require "prawn/labels"
+gem "sinatra-activerecord"

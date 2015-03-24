@@ -1,18 +1,20 @@
 
 get "/" do
-  erb :"user/homepage" 
+  erb :"user/homepage"
+  
 end
 
 post "/menu" do
-  @user=User.new(params)
-  @user.insert
-  erb :"user/menu"
+  @user=User.create(params)
+  @user.save
+  erb :"/user/menu"
 end
+
 
 # Route for each drink option
 post "/user/drink/:drink_name" do
   binding.pry
-  @user_id=params["user_id"]
+  @user_id=params["id"]
   erb :"user/drink/#{params[:drink_name].downcase}_page"
 end  
 

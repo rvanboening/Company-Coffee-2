@@ -5,8 +5,8 @@ end
 
 #before refresh page
 get "/bar_order_page" do
-    Item.print(params["item_id"])
-    made_item = Item.edit(params["item_id"]) 
+    # Item.print(params["item_id"])
+    # made_item = Item.edit(params["item_id"])
  erb :"barista/bar_order_page"
 end
 
@@ -17,7 +17,7 @@ end
  
  
 post "/bar_submit" do
-  @drink=Menu.new(params)
-  @drink.insert
+  @drink=Menu.create(params)
+  @drink.save
   erb :"barista/bar_submit"
 end

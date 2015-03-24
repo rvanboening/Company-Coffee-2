@@ -2,7 +2,7 @@
     <h1>Company Coffee</h1>
         <p>Make these drinks.</a></p>
         <p>
-        <%print_orders=Item.fetch_orders%>
+        <%print_orders=Item.all%>
         <%print_orders.each do |item|%>
     
 <form action="/bar_order_page">

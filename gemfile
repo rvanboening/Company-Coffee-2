@@ -3,7 +3,6 @@ ruby '2.2.0'
 
 gem 'sinatra', '~>1.4.5'
 gem 'pry'
-gem 'sqlite3'
 gem "prawn-labels"
 
 gem "sinatra-activerecord"

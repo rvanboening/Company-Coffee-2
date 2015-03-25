@@ -7,14 +7,12 @@ end
 post "/menu" do
   @user=User.create(params)
   @user.save
-  binding.pry
   erb :"/user/menu"
 end
 
 
 # Route for each drink option
 post "/user/drink/:drink_name" do
-  binding.pry
   @user_id=params["user_id"]
   erb :"user/drink/#{params[:drink_name].downcase}_page"
 end  

@@ -1,15 +1,28 @@
-DATABASE = SQLite3::Database.new("database/coffeering.db")
+unless ActiveRecord::Base.connection.table_exists?(:items)
+  ActiveRecord::Base.connection.create_table :items do |t|
+    t.integer :user_id
+    t.text :drink
+    t.text :size
+    t.text :reg_decaf
+    t.text :cream
+    t.text :sugar
+    t.text :reg_skim
+    t.text :whip_nowhip
+    t.text :flavor
+    t.text :wet_dry
+    t.text :order_made
+  end
+end
 
-DATABASE.results_as_hash = true
+unless ActiveRecord::Base.connection.table_exists?(:users)
+  ActiveRecord::Base.connection.create_table :users do |t|
+    t.integer :office_num
+    t.text :user_name
+  end
+end
 
-DATABASE.execute("CREATE TABLE IF NOT EXISTS items (id INTEGER PRIMARY KEY, user_id INTEGER,
-                  drink TEXT, size TEXT, reg_decaf TEXT, cream TEXT,
-                  sugar TEXT, reg_skim TEXT, whip_nowhip TEXT,
-                  flavor TEXT, wet_dry TEXT, order_made TEXT)")
-                  
-DATABASE.execute("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, 
-                  user_name TEXT, office_num INTEGER)")
-                  
-                  
-DATABASE.execute("CREATE TABLE IF NOT EXISTS menus (id INTEGER PRIMARY KEY, drink_name TEXT)")
-
+unless ActiveRecord::Base.connection.table_exists?(:menus)
+  ActiveRecord::Base.connection.create_table :menus do |t|
+    t.text :drink_name
+  end
+end

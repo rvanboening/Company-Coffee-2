@@ -21,3 +21,9 @@ post "/bar_submit" do
   @drink.save
   erb :"barista/bar_submit"
 end
+
+    
+post "/bar_delete" do
+  Drink.delete_all("id = '#{params[:id]}")
+  redirect_to "barista/bar_edit_menu"
+end
